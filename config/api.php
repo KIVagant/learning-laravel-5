@@ -105,10 +105,14 @@ return [
 
     'errorFormat' => [
         'message' => ':message',
+        'system_message' => ':system_message',
         'errors' => ':errors',
+        'payload' => ':payload',
         'code' => ':code',
         'status_code' => ':status_code',
-        'debug' => ':debug'
+        'help' => ':help',
+        'links' => ':links',
+        'debug' => ':debug',
     ],
 
     /*
