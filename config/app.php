@@ -150,6 +150,7 @@ return [
 		'Laracasts\Flash\FlashServiceProvider',
         'Collective\Html\HtmlServiceProvider',
         'Mitul\Generator\GeneratorServiceProvider',
+        'Dingo\Api\Provider\LaravelServiceProvider',
 
 	],
 
