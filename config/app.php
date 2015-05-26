@@ -147,7 +147,9 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\ViewComposerServiceProvider',
 
-		'Laracasts\Flash\FlashServiceProvider'
+		'Laracasts\Flash\FlashServiceProvider',
+        'Collective\Html\HtmlServiceProvider',
+        'Mitul\Generator\GeneratorServiceProvider',
 
 	],
 
@@ -198,7 +200,9 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'      => 'Illuminate\Html\FormFacade',
 		'Html'      => 'Illuminate\Html\HtmlFacade',
-		'Flash'		=> 'Laracasts\Flash\Flash'
+		'Flash'		=> 'Laracasts\Flash\Flash',
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
 
 	],
 
