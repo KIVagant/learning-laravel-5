@@ -32,25 +32,28 @@ Route::get('foo', ['middleware' => 'manager', function(){
 
 /*
 |--------------------------------------------------------------------------
-| Dingo/api and Mitul/laravel-api-generator for Dingo
+| Dingo/api and Mitul/laravel-api-generator
 |--------------------------------------------------------------------------
 */
 $api = app('api.router');
-
 $api->group([
     'version' => 'v1',
-    'prefix' => 'api',
+    'prefix' => 'api', // API_DOMAIN can be setted in .env
     'namespace' => 'App\Http\Controllers\API',
 ], function ($api) {
     $api->resource('dingos', 'DingoAPIController');
-    $api->get('{}errors/{id}', function($id) {
+    $api->resource('news', 'NewsAPIController');
+    $api->get('errors/{id}', function($id) {
         return \Mitul\Generator\Errors::getErrors([$id]);
     });
     $api->get('errors', function() {
         return \Mitul\Generator\Errors::getErrors([], [], true);
     });
     $api->get('/', function() {
-        $links = \App\Http\Controllers\API\DingoApiController::getHATEOAS();
+        $links = [
+            'news' => \App\Http\Controllers\API\NewsApiController::getHATEOAS(),
+            'dingos' => \App\Http\Controllers\API\DingoApiController::getHATEOAS()
+        ];
 
         return ['links' => $links];
     });
@@ -63,3 +66,12 @@ Route::get('dingos/{id}/delete', [
     'as' => 'dingos.delete',
     'uses' => 'DingoController@destroy',
 ]);
+
+Route::resource('news', 'NewsController');
+
+Route::get('news/{id}/delete', [
+    'as' => 'news.delete',
+    'uses' => 'NewsController@destroy',
+]);
+
+
